@@ -1,0 +1,77 @@
+#Problem Statement 1:
+#A test is conducted which is consisting of 20 MCQs (multiple choices questions) with every MCQ having its four options out of which only one is correct. Determine the probability that a person undertaking that test has answered exactly 5 questions wrong.
+def factorial(n):
+    if n == 1 or n == 0:
+        return 1
+    if n > 1:
+        return factorial(n - 1) * n
+
+def binomial(x, n, p):
+    f = factorial(n) / (factorial(n - x) * factorial(x))
+    return (f * p**x * (1.0 - p)**(n-x))
+
+# Set data
+values = list(map(float, input().split()))
+p = values[0] / (values[0] + values[1])
+n = 20
+
+# Get binomial result
+result = binomial(1,n,p) + binomial(2,n,p) + binomial(3,n,p) + binomial(4,n,p) + binomial(5,n,p)
+print(round(result, 5))
+
+#OUTPUT
+ 0.0000034 (approximately)
+ 
+ #Problem Statement 2:
+#A die marked A to E is rolled 50 times. Find the probability of getting a “D” exactly 5 times.
+
+def factorial(n):
+    if n == 1 or n == 0:
+        return 1
+    if n > 1:
+        return factorial(n - 1) * n
+
+def binomial(x, n, p):
+    f = factorial(n) / (factorial(n - x) * factorial(x))
+    return (f * p**x * (1.0 - p)**(n-x))
+
+# Set data
+values = list(map(float, input().split()))
+p = values[0] / (values[0] + values[1])
+n = 50
+
+# Get binomial result
+result = binomial(1,n,p) + binomial(2,n,p) + binomial(3,n,p) + binomial(4,n,p) + binomial(5,n,p)
+print(round(result, 5))
+
+OUTPUT:
+1 2 3 4 5
+0.00013
+
+#Problem Statement 3:
+#Two balls are drawn at random in succession without replacement from an urn containing 4 red balls and 6 black balls. Find the probabilities of all the possible outcomes.
+
+
+from __future__ import print_function
+
+import numpy as np
+
+
+nred = 4
+nblack = 6
+nblue = 18
+
+m = 10
+
+red = np.random.hypergeometric(nred, nblack, m)
+green = np.random.hypergeometric(nblack, nblue, m - red)
+blue = m - (red + green)
+
+print("red:   %2i" % red)
+print("green: %2i" % green)
+print("blue:  %2i" % blue)
+
+OUTPUT
+red:    4
+green:  1
+blue:   5
